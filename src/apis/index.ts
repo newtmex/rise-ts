@@ -1,6 +1,5 @@
 export * from './accounts';
 export * from './blocks';
-export * from './dapps';
 export * from './delegates';
 export * from './loader';
 export * from './multiSignatures';
