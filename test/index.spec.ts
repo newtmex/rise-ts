@@ -2,24 +2,27 @@ import * as chai from 'chai';
 import * as sinon from 'sinon';
 import * as chaiAsPromised from 'chai-as-promised';
 import {transport} from '../src/apis/transport';
-import {APIWrapper, dposAPI} from '../src/index';
+import {APIWrapper, rise} from '../src/index';
 
 const { expect } = chai;
 chai.use(chaiAsPromised);
 
-const subpackages = ['accounts', 'blocks', 'dapps', 'delegates', 'loader', 'multiSignatures', 'peers', 'signatures', 'transactions'];
+const subpackages = ['accounts', 'blocks', 'delegates', 'loader', 'multiSignatures', 'peers', 'signatures', 'transactions'];
 const functions   = ['buildTransport', 'transport'];
 
-describe('dposAPI', () => {
+describe('rise', () => {
   it('should have field nodeAddress', () => {
-    expect(dposAPI.nodeAddress).to.be.string;
+    expect(rise.nodeAddress).to.be.string;
   });
+  it('should set nodeAddress to wallet', () => {
+    expect(rise.nodeAddress).to.eq('https://wallet.rise.vision');
+  })
   it('should have fn newWrapper', () => {
-    expect(dposAPI.newWrapper).to.be.a('function');
+    expect(rise.newWrapper).to.be.a('function');
   });
 
   it('should have timeout', () => {
-    expect(dposAPI.timeout).to.be.a('number');
+    expect(rise.timeout).to.be.a('number');
   });
 
   // subpackages.forEach((subPac) => {
@@ -31,15 +34,15 @@ describe('dposAPI', () => {
   functions.forEach((fn) => {
     it(`should have .${fn}() defined and function`, () => {
 
-      expect(dposAPI[fn]).to.exist;
-      expect(dposAPI[fn]).to.be.a('function');
+      expect(rise[fn]).to.exist;
+      expect(rise[fn]).to.be.a('function');
     });
   });
 
   describe('newWrapper', () => {
     let wrapp: APIWrapper;
     beforeEach(() => {
-      wrapp = dposAPI.newWrapper('http://localhost.com');
+      wrapp = rise.newWrapper('http://localhost.com');
     });
     it('should create a newWrapper with all the subpackages defined', () => {
       subpackages.forEach((sp) => expect(wrapp[sp]).to.exist);
@@ -52,16 +55,16 @@ describe('dposAPI', () => {
         called = true;
         return 5;
       });
-      const w = dposAPI.newWrapper('http://localhost', opts);
+      const w = rise.newWrapper('http://localhost', opts);
       try { await w.blocks.getNethash(); } catch (e) {}
       expect(called).is.true;
     });
   });
 
   it('one method should call resolver and probably fail due to inexistent host', async () => {
-    dposAPI.nodeAddress = 'http://127.0.0.1:7777';
-    dposAPI.timeout = 10000;
-    expect(dposAPI.loader.status()).to.be.rejected;
+    rise.nodeAddress = 'http://127.0.0.1:7777';
+    rise.timeout = 10000;
+    expect(rise.loader.status()).to.be.rejected;
   });
 
 });

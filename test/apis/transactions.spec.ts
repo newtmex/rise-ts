@@ -14,7 +14,7 @@ describe('Transactions', () => {
 
   it('.getList with no params should propagate empty params', () => {
     const spy = sinon.spy();
-    transactions(spy).getList()
+    transactions(spy).getList();
     apiBasicChecker(spy, '/transactions', undefined);
     expect(spy.firstCall.args[0].params).is.deep.eq({});
   });
@@ -31,13 +31,22 @@ describe('Transactions', () => {
     expect(spy.firstCall.args[0].params).is.deep.eq({ id: '1' });
   });
 
-  it('.send should call PUT /transactions with data given', () => {
+  it('.put should call PUT /transactions with transaction', () => {
     const spy = sinon.spy();
-    transactions(spy).send({ a: 1, b: 2 } as any);
+    transactions(spy).put({ a: 1, b: 2 } as any);
     apiBasicChecker(spy, '/transactions', undefined);
     expect(spy.firstCall.args[0].method).is.deep.eq('PUT');
-    expect(spy.firstCall.args[0].data).is.deep.eq({ a: 1, b: 2 });
+    expect(spy.firstCall.args[0].data).is.deep.eq({transaction: { a: 1, b: 2 }});
   });
+
+  it('.put should call PUT /transactions with transactions', () => {
+    const spy = sinon.spy();
+    transactions(spy).put([{ a: 1}, { b: 2 }] as any);
+    apiBasicChecker(spy, '/transactions', undefined);
+    expect(spy.firstCall.args[0].method).is.deep.eq('PUT');
+    expect(spy.firstCall.args[0].data).is.deep.eq({ transactions: [{ a: 1}, {b: 2 }]});
+  });
+
   it('.getUnconfirmedTransactions should call /unconfirmed', () => {
     const spy = sinon.spy();
     transactions(spy).getUnconfirmedTransactions();

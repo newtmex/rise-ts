@@ -9,6 +9,5 @@ export interface MultiSignaturesAPI {
    */
   getPending(publicKey: string, callback?: cback<{ transactions: Array<{ min: number, max: number, lifetime: number, signed: true, transaction: MultiSigTransaction<any> }> }>): Promise<{ transactions: Array<{ min: number, max: number, lifetime: number, signed: true, transaction: MultiSigTransaction<any> }> } & BaseApiResponse>;
 
-
   getAccounts(publicKey: string, callback?: cback<any>);
 }

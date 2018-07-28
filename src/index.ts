@@ -108,7 +108,7 @@ export interface APIWrapper {
 export const rise: RiseAPI = (() => {
   const toRet = {
     errorAsResponse: true,
-    nodeAddress: '',
+    nodeAddress: 'https://wallet.rise.vision',
     newWrapper(nodeAddress: string, opts: {timeout: number, errorAsResponse?: boolean} = {timeout: 4000}): APIWrapper {
       const req = requester(axios, nodeAddress, {...{errorAsResponse: true}, ...opts});
       return addTransportBuilder(

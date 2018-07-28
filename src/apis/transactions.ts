@@ -43,15 +43,16 @@ export const transactions = (rs: RsType): TransactionsAPI => ({
   put(tx: Array<Transaction<any>>|Transaction<any>, callback?: cback<void>) {
     if (Array.isArray(tx)) {
       return rs({
+        data: {transactions: tx},
         method: 'PUT',
-        params: {transactions: tx},
-        path: '/transactions/',
+        path: '/transactions',
       }, callback);
     }
     return rs({
+      data: {transaction: tx},
       method: 'PUT',
-      params: {transaction: tx},
-      path: '/transactions/',
+      path: '/transactions',
     }, callback);
-  }
+  },
+
 });
