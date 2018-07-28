@@ -1,12 +1,12 @@
-[![npm](https://img.shields.io/npm/v/dpos-api-wrapper.svg)](https://npmjs.org/package/dpos-api-wrapper) [![Build Status](https://travis-ci.org/vekexasia/dpos-api-wrapper.svg?branch=master)](https://travis-ci.org/vekexasia/dpos-api-wrapper)  [![Coverage Status](https://coveralls.io/repos/github/vekexasia/dpos-api-wrapper/badge.svg?branch=master)](https://coveralls.io/github/vekexasia/dpos-api-wrapper?branch=master) 
+[![npm](https://img.shields.io/npm/v/rise-ts.svg)](https://npmjs.org/package/rise-ts) [![Build Status](https://travis-ci.org/RiseVision/rise-ts.svg?branch=master)](https://travis-ci.org/RiseVision/rise-ts)  [![Coverage Status](https://coveralls.io/repos/github/RiseVision/rise-ts/badge.svg?branch=master)](https://coveralls.io/github/RiseVision/rise-ts?branch=master) 
 
-# Dpos Javascript Library
+# RISE Javascript Library
 
-Through this library you can interact with a dposAPI node in an easy way. The library works both in the browser and Node.js.
+Through this library you can interact with a rise node in an easy way. The library works both in the browser and Node.js.
 
 ## Documentation
 
-All available methods are available [in the jsdoc](https://vekexasia.github.io/dpos-api-wrapper/interfaces/dposapi.html)
+All available methods are available [in the jsdoc](https://risevision.github.io/rise-ts/interfaces/rise.html)
 
 ## Quick Start
 
@@ -15,9 +15,9 @@ All available methods are available [in the jsdoc](https://vekexasia.github.io/d
 Either download `dist/browser/index.js` or use gitcdn as follows:
 
 ```html
-<script type="text/javascript" src="https://unpkg.com/dpos-api-wrapper/dist/browser/index.js"></script>
+<script type="text/javascript" src="https://unpkg.com/rise-ts/dist/browser/index.js"></script>
 <script>
-  dposAPI.nodeAddress = 'http://example.com:5566'; // Set your node url here. (no trailing slash)
+  rise.nodeAddress = 'http://example.com:5566'; // Set your node url here. (no trailing slash)
   
   // ...
 </script>
@@ -27,11 +27,11 @@ Either download `dist/browser/index.js` or use gitcdn as follows:
 ### Include it with npm (Suitable also for webpack/browserify)
 
 ```bash
-npm i dpos-api-wrapper -D
+npm i rise-ts -D
 ```
 
 ```javascript
-var dposAPI = require('dpos-api-wrapper').dposAPI;
+var dposAPI = require('rise-ts').dposAPI;
 dposAPI.nodeAddress= 'http://example.com:5566'; // Set your node url here. (no trailing slash) 
 
 ```
@@ -59,7 +59,7 @@ For example you can open a new account by doing. Be aware that all the methods s
 going to be deprecated:
 
 ```javascript
-dposAPI.accounts.open('secret', function(error, account) {
+rise.accounts.open('secret', function(error, account) {
   if (!error) {
     // yay!
     console.log(account);
@@ -73,7 +73,7 @@ dposAPI.accounts.open('secret', function(error, account) {
 or
 
 ```javascript
-dposAPI.accounts.open('secret')
+rise.accounts.open('secret')
     .then(function (account) {
       console.log(account);
     })
@@ -85,7 +85,7 @@ dposAPI.accounts.open('secret')
 which can be even shorter if you write your code in TypeScript or ES6
 
 ```javascript
-dposAPI.accounts.open('secret')
+rise.accounts.open('secret')
     .then(console.log)
     .catch(error => console.log('error: ', error));
 ```
@@ -95,12 +95,12 @@ dposAPI.accounts.open('secret')
 
 In some cases you need to connect to multiple nodes.
 
-To do so, just use the [newWrapper](https://vekexasia.github.io/dpos-api-wrapper/interfaces/dposapi.html#newwrapper) method:
+To do so, just use the [newWrapper](https://risevision.github.io/rise-ts/interfaces/rise.html#newwrapper) method:
 
 ```javascript
-var node1 = dposAPI.newWrapper('http://node1:1234');
-var node2 = dposAPI.newWrapper('http://node2:1234');
+var node1 = rise.newWrapper('http://node1:1234');
+var node2 = rise.newWrapper('http://node2:1234');
 
-// interact with node1 & node2 using the same APIs available within 'dposAPI' variable.
+// interact with node1 & node2 using the same APIs available within 'rise' variable.
 ```
 

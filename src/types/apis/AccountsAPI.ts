@@ -3,12 +3,6 @@ import { Account, Delegate } from '../beans';
 // tslint:disable max-line-length
 
 export interface AccountsAPI {
-  /**
-   * Opens a new account using the specified secrect string
-   * @param secret the string to use to generate the new account
-   * @param callback callback where to receive the result.
-   */
-  open(secret: string, callback?: cback<{ account: Account }>): Promise<{ account: Account } & BaseApiResponse>;
 
   /**
    * Returns balance and unconfirmed balance for the specified address!
@@ -23,13 +17,6 @@ export interface AccountsAPI {
    * @param callback callback where to receive the result.
    */
   getPublicKey(address: string, callback?: cback<{ publicKey: string }>): Promise<{ publicKey: string } & BaseApiResponse>;
-
-  /**
-   * Generates a Public Key
-   * @param secret the secret to use
-   * @param callback callback where to receive the result.
-   */
-  generatePublicKey(secret: string, callback?: cback<{ publicKey: string }>): Promise<{ publicKey: string } & BaseApiResponse>;
 
   /**
    * Get Account information by its address
@@ -52,10 +39,4 @@ export interface AccountsAPI {
    */
   getDelegates(address: string, callback?: cback<{ delegates: Delegate[] }>): Promise<{ delegates: Delegate[] } & BaseApiResponse>;
 
-  /**
-   * Cast votes. The delegates array must use delegate Public Key prepended witha "+" or "-" sign wether you want to up/downvote the delegate
-   * @param data
-   * @param callback callback where to receive the result.
-   */
-  putDelegates(data: { secret: string, publicKey: string, delegates: string[], secondSecret?: string }, callback?: cback<any>): Promise<any>;
 }

@@ -31,7 +31,7 @@ import {BaseApiResponse, cback as cbackType} from './types/base';
 
 export * from './types/beans';
 
-export interface DposAPI extends APIWrapper {
+export interface RiseAPI extends APIWrapper {
   /**
    * Default Node Address: ex: http://localhost:1234 (no leading slash)
    */
@@ -91,11 +91,6 @@ export interface APIWrapper {
   multiSignatures: MultiSignaturesAPI;
 
   /**
-   * Decentralized Apps APIs (in progress)
-   */
-  dapps: DappsAPI;
-
-  /**
    * Easily create a transport API without providing headers.
    * @param {boolean} flushCache flush current transportAPI cache
    * @returns {Promise<TransportApi>}
@@ -112,7 +107,7 @@ export interface APIWrapper {
   rawRequest: <R>(obj: { noApiPrefix?: boolean, headers?: any, params?: any, path: string, method?: string, data?: any }, cback: cbackType<R>) => Promise<R & BaseApiResponse>;
 }
 
-export const dposAPI: DposAPI = (() => {
+export const rise: RiseAPI = (() => {
   const toRet = {
     errorAsResponse: true,
     nodeAddress: '',
@@ -136,7 +131,7 @@ export const dposAPI: DposAPI = (() => {
       );
     },
     timeout: 4000,
-  } as DposAPI;
+  } as RiseAPI;
 
   function rproxy<R>(obj: { params?: any, path: string, method?: string, data?: any }, cback: cbackType<R>): Promise<R & BaseApiResponse> {
     return requester(axios, toRet.nodeAddress, {timeout: toRet.timeout, errorAsResponse: toRet.errorAsResponse}).apply(null, arguments);
@@ -150,7 +145,7 @@ export const dposAPI: DposAPI = (() => {
   toRet.signatures      = signatures(rproxy);
   toRet.delegates       = delegates(rproxy);
   toRet.multiSignatures = multiSignatures(rproxy);
-  toRet.dapps           = dapps(rproxy);
+  // toRet.dapps           = dapps(rproxy);
   toRet.transport       = transport(rproxy);
   toRet.rawRequest      = rproxy;
 

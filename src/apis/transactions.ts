@@ -27,15 +27,6 @@ export const transactions = (rs: RsType): TransactionsAPI => ({
     }, callback);
   },
 
-  // tslint:disable-next-line max-line-length
-  send(conf: { secret: string, amount: number, recipientId: string, publicKey?: string, secondSecret?: string }, callback?: cback<any>) {
-    return rs({
-      data: {...conf},
-      method: 'PUT',
-      path: '/transactions',
-    }, callback);
-  },
-
   getUnconfirmedTransactions(callback?: cback<{ transactions: Array<Transaction<any>> }>) {
     return rs({
       path: '/transactions/unconfirmed',
@@ -48,4 +39,19 @@ export const transactions = (rs: RsType): TransactionsAPI => ({
       path: '/transactions/unconfirmed/get',
     }, callback);
   },
+
+  put(tx: Array<Transaction<any>>|Transaction<any>, callback?: cback<void>) {
+    if (Array.isArray(tx)) {
+      return rs({
+        method: 'PUT',
+        params: {transactions: tx},
+        path: '/transactions/',
+      }, callback);
+    }
+    return rs({
+      method: 'PUT',
+      params: {transaction: tx},
+      path: '/transactions/',
+    }, callback);
+  }
 });

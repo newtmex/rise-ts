@@ -20,9 +20,15 @@ export interface TransactionsAPI {
 
   count(callback?: cback<{ confirmed: number, multisignature: number, unconfirmed: number, queued: number }>): Promise<{ confirmed: number, multisignature: number, unconfirmed: number, queued: number } & BaseApiResponse>;
 
-  send(conf: { secret: string, amount: number, recipientId: string, publicKey?: string, secondSecret?: string }, callback?: cback<{ transactionId: string }>): Promise<{ transactionId: string } & BaseApiResponse>;
-
   getUnconfirmedTransactions(callback?: cback<{ transactions: Array<Transaction<any>> }>): Promise<{ transactions: Array<Transaction<any>> } & BaseApiResponse>;
 
   getUnconfirmedTransaction(id: string, callback?: cback<{ transactions: Array<Transaction<any>> }>): Promise<{ transactions: Array<Transaction<any>> } & BaseApiResponse>;
+
+  /**
+   * Enqueues a new transaction (or multiple transactions) for inclusion in the block
+   * @param {Array<Transaction<any>> | Transaction<any>} tx
+   * @param {cback<void>} callback
+   * @since 1.1.1 core version
+   */
+  put(tx: Array<Transaction<any>>|Transaction<any>, callback?: cback<void>): Promise<BaseApiResponse>;
 }
