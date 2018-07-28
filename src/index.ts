@@ -3,7 +3,6 @@ import axios from 'axios';
 import {
   AccountsAPI,
   BlocksAPI,
-  DappsAPI,
   DelegatesAPI,
   LoaderAPI,
   MultiSignaturesAPI,
@@ -17,7 +16,6 @@ import {
 import {
   accounts,
   blocks,
-  dapps,
   delegates,
   loader,
   multiSignatures,
@@ -117,7 +115,6 @@ export const rise: RiseAPI = (() => {
         {
           accounts       : accounts(req),
           blocks         : blocks(req),
-          dapps          : dapps(req),
           delegates      : delegates(req),
           loader         : loader(req),
           multiSignatures: multiSignatures(req),
@@ -145,7 +142,6 @@ export const rise: RiseAPI = (() => {
   toRet.signatures      = signatures(rproxy);
   toRet.delegates       = delegates(rproxy);
   toRet.multiSignatures = multiSignatures(rproxy);
-  // toRet.dapps           = dapps(rproxy);
   toRet.transport       = transport(rproxy);
   toRet.rawRequest      = rproxy;
 
