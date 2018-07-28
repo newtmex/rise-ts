@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/rise-ts.svg)](https://npmjs.org/package/rise-ts) [![Build Status](https://travis-ci.org/RiseVision/rise-ts.svg?branch=master)](https://travis-ci.org/RiseVision/rise-ts)  [![Coverage Status](https://coveralls.io/repos/github/RiseVision/rise-ts/badge.svg?branch=master)](https://coveralls.io/github/RiseVision/rise-ts?branch=master) 
+[![npm](https://img.shields.io/npm/v/risejs.svg)](https://npmjs.org/package/risejs) [![Build Status](https://travis-ci.org/RiseVision/rise-ts.svg?branch=master)](https://travis-ci.org/RiseVision/rise-ts)  [![Coverage Status](https://coveralls.io/repos/github/RiseVision/rise-ts/badge.svg?branch=master)](https://coveralls.io/github/RiseVision/rise-ts?branch=master) 
 
 # RISE Javascript Library
 

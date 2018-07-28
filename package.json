@@ -1,5 +1,5 @@
 {
-  "name": "dpos-api-wrapper",
+  "name": "risejs",
   "version": "1.3.2",
   "description": "DPOS API Wrapper written in TypeScript",
   "main": "dist/es5/index.js",
