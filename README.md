@@ -1,41 +1,167 @@
-[![npm](https://img.shields.io/npm/v/risejs.svg)](https://npmjs.org/package/risejs) [![Build Status](https://travis-ci.org/RiseVision/rise-ts.svg?branch=master)](https://travis-ci.org/RiseVision/rise-ts)  [![Coverage Status](https://coveralls.io/repos/github/RiseVision/rise-ts/badge.svg?branch=master)](https://coveralls.io/github/RiseVision/rise-ts?branch=master) 
+[![npm](https://img.shields.io/npm/v/risejs.svg)](https://npmjs.org/package/risejs) [![Build Status](https://travis-ci.org/RiseVision/rise-ts.svg?branch=master)](https://travis-ci.org/RiseVision/rise-ts) [![Coverage Status](https://coveralls.io/repos/github/RiseVision/rise-ts/badge.svg?branch=master)](https://coveralls.io/github/RiseVision/rise-ts?branch=master)
 
 # RISE Javascript Library
 
-Through this library you can interact with a rise node in an easy way. The library works both in the browser and Node.js.
+A JavaScript API Wrapper for interacting with a [rise node](https://github.com/RiseVision/rise-node). The library works both in the browser and Node.js.
 
-## Documentation
+## Table of Contents
 
-All available methods are available [in the jsdoc](https://risevision.github.io/rise-ts/interfaces/rise.html)
+* [API Reference](#api-reference)
+* [Installation](#installation)
+    * [Package Manager](#package-manager)
+    * [Browser](#browser)
+* [Usage](#usage)
+    * [Configuration](#configuration)
+    * [Examples](#examples)
+    * [Error Handling](#error-handling)
+    * [TypeScript](#typescript)
+    * [Advanced Usage](#advanced-usage)
+* [Compatibility](#compatibility)
+    * [Browser Support](#browser-support)
+    * [Node support](#node-support)
+* [Contributing](#contributing)
+* [License](#license)
 
-## Quick Start
 
-### Include the library in your browser.
+## API Reference
 
-Either download `dist/browser/index.js` or use gitcdn as follows:
+All available methods are available in the API reference at [https://risevision.github.io/rise-ts](https://risevision.github.io/rise-ts)
 
-```html
-<script type="text/javascript" src="https://unpkg.com/rise-ts/dist/browser/index.js"></script>
-<script>
-  rise.nodeAddress = 'http://example.com:5566'; // Set your node url here. (no trailing slash)
-  
-  // ...
-</script>
+## Installation
 
-```
+### Package Manager
 
-### Include it with npm (Suitable also for webpack/browserify)
+Install via your favorite package manager
 
 ```bash
-npm i rise-ts -D
+npm install --save risejs
+# or using yarn
+yarn add risejs
 ```
+
+Include in your javascript
 
 ```javascript
-var dposAPI = require('rise-ts').dposAPI;
-dposAPI.nodeAddress= 'http://example.com:5566'; // Set your node url here. (no trailing slash) 
-
+var rise = require('risejs').rise;
+// or using es6
+import { rise } from 'risejs'
 ```
 
+### Browser
+
+Include via the unpkg CDN in your html
+
+```html
+<script type="text/javascript" src="https://unpkg.com/risejs/dist/browser/index.js"></script>
+```
+
+`rise` is now globally available on the `window` object
+
+```html
+<script>
+    rise.nodeAddress = 'http://example.com:5566';
+    // ...
+</script>
+```
+
+## Usage
+
+### Configuration
+
+Set the node address on the `RiseAPI` object (**note:** omit any trailing slashes to the url)
+
+```javascript
+rise.nodeAddress = 'http://localhost:5566';
+```
+
+To see other configuration options [refer to the API reference](https://risevision.github.io/rise-ts/interfaces/riseapi.html)
+
+### Examples
+
+All API method responses can be handled with either a callback or a Promise. For example, to get the chain status using callbacks
+
+```javascript
+rise.blocks.getStatus(function(err, res) {
+    if (err) {
+    return console.log('Error: ', err); // handle error
+    }
+    console.log(res); // { success: true, broadHash: "12aebd7b...
+});
+```
+
+using Promises
+
+```javascript
+rise.blocks.getStatus()
+    .then(function(res) {
+        console.log(res); // { success: true, broadHash: "12aebd7b...
+    })
+    .catch(function(err) {
+        console.log('Error: ', err); // handle error
+    });
+```
+
+using async / await
+
+```javascript
+try {
+    const res = await rise.blocks.getStatus()
+    console.log(res) // { success: true, broadHash: "12aebd7b...
+}
+catch(err) {
+    console.log('Error: ', err) // handle error
+}
+```
+
+### Error Handling
+
+If `rise.errorAsResponse` is set to `true` (the default), application errors will be returned as an object in the response
+
+```json
+{
+    "success": false,
+    "error": "Message"
+}
+```
+
+So that handling errors is as follows
+
+```javascript
+rise.blocks.getStatus()
+    .then(function(res) {
+        if (!res.success) {
+            return console.log('Application Error: ', res.error); // handle Application Error
+        }
+        console.log(res); // { success: true, broadHash: "12aebd7b...
+    })
+    .catch(function(err) {
+        console.log('HTTP Error: ', err); // handle HTTP error
+    });
+```
+
+### TypeScript
+
+Our Libraries are written in typescript so that you can use types in your applications
+
+```TypeScript
+import { rise, BlockStatusResponse } from 'risejs';
+
+function handleStatus(err: Error, status: BlockStatusResponse) {
+    console.log(status);
+};
+rise.blocks.getStatus(handleStatus);
+```
+
+All available types are available in the API reference as well at [http://risevision.github.io/rise-ts](http://risevision.github.io/rise-ts)
+
+### Advanced Usage
+
+Additional `APIWrapper` objects can be made using the `newWrapper` method
+
+```javascript
+var node1 = rise.newWrapper('http://node1:1234');
+var node2 = rise.newWrapper('http://node2:1234', { timeout: 5000 });
+```
 
 ## Compatibility
 
@@ -51,56 +177,14 @@ Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | 8+ ✔ |
 
 Node >= 4.x is fully supported :)
 
-## Examples
+## Contributing
 
-All the APIs are designed to be easy to use. You can use both Callbacks or Promises; you decide.
+Read the [Contributing Guide](CONTRIBUTING.md) for guidelines as well as local development instructions. And thank you to all of our [contributors](https://github.com/RiseVision/rise-ts/graphs/contributors).
 
-For example you can open a new account by doing. Be aware that all the methods sending a secret over the network are
-going to be deprecated:
+## Discussion
 
-```javascript
-rise.accounts.open('secret', function(error, account) {
-  if (!error) {
-    // yay!
-    console.log(account);
-  } else {
-    console.log('error: ', error);
-  }
-  // ...
-});
-```
+Feel free to join the [Slack](https://slack.rise.vision)!
 
-or
+## License
 
-```javascript
-rise.accounts.open('secret')
-    .then(function (account) {
-      console.log(account);
-    })
-    .catch(function (error) {
-      console.log('error: ', error);
-    });
-```
-
-which can be even shorter if you write your code in TypeScript or ES6
-
-```javascript
-rise.accounts.open('secret')
-    .then(console.log)
-    .catch(error => console.log('error: ', error));
-```
-
-
-## Advanced Usage
-
-In some cases you need to connect to multiple nodes.
-
-To do so, just use the [newWrapper](https://risevision.github.io/rise-ts/interfaces/rise.html#newwrapper) method:
-
-```javascript
-var node1 = rise.newWrapper('http://node1:1234');
-var node2 = rise.newWrapper('http://node2:1234');
-
-// interact with node1 & node2 using the same APIs available within 'rise' variable.
-```
-
+[MIT](LICENSE)
