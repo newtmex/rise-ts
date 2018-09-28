@@ -137,4 +137,14 @@ describe('Delegates', () => {
     expect(stub.firstCall.args[0].path).eq('/delegates/getNextForgers');
     expect(stub.firstCall.args[0].params).deep.eq({limit: 10});
   });
+
+  it('.getList', () => {
+    const stub = sinon.stub();
+    delegates(stub).search({q: 'search query', limit: 10, orderBy: 'rank'});
+    expect(stub.calledOnce).is.true;
+    expect(stub.firstCall.args[0].path).eq('/delegates/search');
+    expect(stub.firstCall.args[0].params.q).eq('search query');
+    expect(stub.firstCall.args[0].params.limit).eq(10);
+    expect(stub.firstCall.args[0].params.orderBy).eq('rank');
+  });
 });

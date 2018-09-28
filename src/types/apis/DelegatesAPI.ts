@@ -29,4 +29,6 @@ export interface DelegatesAPI {
 
   getNextForgers(limit: number, callback?: cback<{ currentBlock: number, currentBlockSlot: number, currentSlot: number, delegates: string[] }>): Promise<{ currentBlock: number, currentBlockSlot: number, currentSlot: number, delegates: string[] } & BaseApiResponse>;
 
+  search(query: { q: string, limit?: number, orderBy?: string }, callback?: cback<{ delegates: Delegate[] }>): Promise<{ delegates: Delegate[] } & BaseApiResponse>;
+
 }

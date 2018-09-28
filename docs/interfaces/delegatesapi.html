@@ -943,6 +943,9 @@ img { max-width: 100%; }
 					<a href="delegatesapi.html#getvoters" class="tsd-kind-icon">get<wbr>Voters</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<a href="delegatesapi.html#search" class="tsd-kind-icon">search</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
 					<a href="delegatesapi.html#toggleforging" class="tsd-kind-icon">toggle<wbr>Forging</a>
 				</li>
 			</ul>
@@ -975,6 +978,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="delegatesapi.html#getlist" class="tsd-kind-icon">get<wbr>List</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="delegatesapi.html#getnextforgers" class="tsd-kind-icon">get<wbr>Next<wbr>Forgers</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="delegatesapi.html#getvoters" class="tsd-kind-icon">get<wbr>Voters</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="delegatesapi.html#search" class="tsd-kind-icon">search</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="delegatesapi.html#toggleforging" class="tsd-kind-icon">toggle<wbr>Forging</a></li>
 						</ul>
 					</section>
@@ -993,7 +997,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/RiseVision/rise-js-sdk/blob/c4ff5a0/src/types/apis/DelegatesAPI.ts#L5">types/apis/DelegatesAPI.ts:5</a></li>
+								<li>Defined in <a href="https://github.com/RiseVision/rise-ts/blob/84dff0c/src/types/apis/DelegatesAPI.ts#L5">types/apis/DelegatesAPI.ts:5</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1030,7 +1034,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/RiseVision/rise-js-sdk/blob/c4ff5a0/src/types/apis/DelegatesAPI.ts#L13">types/apis/DelegatesAPI.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/RiseVision/rise-ts/blob/84dff0c/src/types/apis/DelegatesAPI.ts#L13">types/apis/DelegatesAPI.ts:13</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1059,7 +1063,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/RiseVision/rise-js-sdk/blob/c4ff5a0/src/types/apis/DelegatesAPI.ts#L11">types/apis/DelegatesAPI.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/RiseVision/rise-ts/blob/84dff0c/src/types/apis/DelegatesAPI.ts#L11">types/apis/DelegatesAPI.ts:11</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1085,7 +1089,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/RiseVision/rise-js-sdk/blob/c4ff5a0/src/types/apis/DelegatesAPI.ts#L9">types/apis/DelegatesAPI.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/RiseVision/rise-ts/blob/84dff0c/src/types/apis/DelegatesAPI.ts#L9">types/apis/DelegatesAPI.ts:9</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1105,22 +1109,33 @@ img { max-width: 100%; }
 				<a name="getforgedbyaccount" class="tsd-anchor"></a>
 				<h3>get<wbr>Forged<wbr>ByAccount</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Forged<wbr>ByAccount<span class="tsd-signature-symbol">(</span>publicKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../globals.html#cback" class="tsd-signature-type">cback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><a href="baseapiresponse.html" class="tsd-signature-type">BaseApiResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Forged<wbr>ByAccount<span class="tsd-signature-symbol">(</span>param<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../globals.html#cback" class="tsd-signature-type">cback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><a href="baseapiresponse.html" class="tsd-signature-type">BaseApiResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/RiseVision/rise-js-sdk/blob/c4ff5a0/src/types/apis/DelegatesAPI.ts#L19">types/apis/DelegatesAPI.ts:19</a></li>
+								<li>Defined in <a href="https://github.com/RiseVision/rise-ts/blob/84dff0c/src/types/apis/DelegatesAPI.ts#L24">types/apis/DelegatesAPI.ts:24</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Return the forged amount by account</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>publicKey: <span class="tsd-signature-type">string</span></h5>
+								<h5>param: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>if string is passed it&#39;s threated as publicKey</p>
+								</div>
 							</li>
 							<li>
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../globals.html#cback" class="tsd-signature-type">cback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>callback to get the result</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><a href="baseapiresponse.html" class="tsd-signature-type">BaseApiResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1138,7 +1153,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/RiseVision/rise-js-sdk/blob/c4ff5a0/src/types/apis/DelegatesAPI.ts#L21">types/apis/DelegatesAPI.ts:21</a></li>
+								<li>Defined in <a href="https://github.com/RiseVision/rise-ts/blob/84dff0c/src/types/apis/DelegatesAPI.ts#L26">types/apis/DelegatesAPI.ts:26</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1152,7 +1167,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/RiseVision/rise-js-sdk/blob/c4ff5a0/src/types/apis/DelegatesAPI.ts#L23">types/apis/DelegatesAPI.ts:23</a></li>
+								<li>Defined in <a href="https://github.com/RiseVision/rise-ts/blob/84dff0c/src/types/apis/DelegatesAPI.ts#L28">types/apis/DelegatesAPI.ts:28</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1172,19 +1187,19 @@ img { max-width: 100%; }
 				<a name="getlist" class="tsd-anchor"></a>
 				<h3>get<wbr>List</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>List<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../globals.html#cback" class="tsd-signature-type">cback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><a href="baseapiresponse.html" class="tsd-signature-type">BaseApiResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>List<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../globals.html#cback" class="tsd-signature-type">cback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><a href="baseapiresponse.html" class="tsd-signature-type">BaseApiResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/RiseVision/rise-js-sdk/blob/c4ff5a0/src/types/apis/DelegatesAPI.ts#L7">types/apis/DelegatesAPI.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/RiseVision/rise-ts/blob/84dff0c/src/types/apis/DelegatesAPI.ts#L7">types/apis/DelegatesAPI.ts:7</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>query: <span class="tsd-signature-type">object</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> query: <span class="tsd-signature-type">object</span></h5>
 								<ul class="tsd-parameters">
 									<li class="tsd-parameter">
 										<h5><span class="tsd-flag ts-flagOptional">Optional</span> limit<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
@@ -1215,7 +1230,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/RiseVision/rise-js-sdk/blob/c4ff5a0/src/types/apis/DelegatesAPI.ts#L25">types/apis/DelegatesAPI.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/RiseVision/rise-ts/blob/84dff0c/src/types/apis/DelegatesAPI.ts#L30">types/apis/DelegatesAPI.ts:30</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1241,13 +1256,50 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/RiseVision/rise-js-sdk/blob/c4ff5a0/src/types/apis/DelegatesAPI.ts#L15">types/apis/DelegatesAPI.ts:15</a></li>
+								<li>Defined in <a href="https://github.com/RiseVision/rise-ts/blob/84dff0c/src/types/apis/DelegatesAPI.ts#L15">types/apis/DelegatesAPI.ts:15</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>publicKey: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../globals.html#cback" class="tsd-signature-type">cback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><a href="baseapiresponse.html" class="tsd-signature-type">BaseApiResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+				<a name="search" class="tsd-anchor"></a>
+				<h3>search</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">search<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, callback<span class="tsd-signature-symbol">?: </span><a href="../globals.html#cback" class="tsd-signature-type">cback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><a href="baseapiresponse.html" class="tsd-signature-type">BaseApiResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/RiseVision/rise-ts/blob/84dff0c/src/types/apis/DelegatesAPI.ts#L32">types/apis/DelegatesAPI.ts:32</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>query: <span class="tsd-signature-type">object</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> limit<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> order<wbr>By<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+									</li>
+									<li class="tsd-parameter">
+										<h5>q<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+									</li>
+								</ul>
 							</li>
 							<li>
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <a href="../globals.html#cback" class="tsd-signature-type">cback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></h5>
@@ -1267,7 +1319,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/RiseVision/rise-js-sdk/blob/c4ff5a0/src/types/apis/DelegatesAPI.ts#L17">types/apis/DelegatesAPI.ts:17</a></li>
+								<li>Defined in <a href="https://github.com/RiseVision/rise-ts/blob/84dff0c/src/types/apis/DelegatesAPI.ts#L17">types/apis/DelegatesAPI.ts:17</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>

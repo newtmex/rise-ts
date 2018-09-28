@@ -111,4 +111,15 @@ export const delegates = (rs: RsType): DelegatesAPI => ({
       callback
     );
   },
+
+  search(query: { q: string, limit?: number, orderBy?: string }, callback?: cback<{ delegates: Delegate[] }>) {
+    return rs(
+      {
+        params: query,
+        path  : '/delegates/search',
+      },
+      callback
+    );
+  },
+
 });
